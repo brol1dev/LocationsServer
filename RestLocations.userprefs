@@ -1,0 +1,35 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="RestLocations/Global.asax.cs">
+    <Files>
+      <File FileName="RestLocations/Global.asax.cs" Line="34" Column="6" />
+      <File FileName="RestLocations/service/LocationService.cs" Line="27" Column="5" />
+      <File FileName="RestLocations/db/DbUtils.cs" Line="24" Column="28" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="RestLocations" expanded="True">
+            <Node name="References" expanded="True" />
+            <Node name="db" expanded="True" />
+            <Node name="model" expanded="True" />
+            <Node name="service" expanded="True" />
+            <Node name="Default.aspx" expanded="True" />
+            <Node name="Global.asax" expanded="True">
+              <Node name="Global.asax.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/ericvargas/workspace/mono/RestLocations/RestLocations/service/LocationService.cs" line="18" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
