@@ -1,0 +1,9 @@
+WebServices Provider. 
+
+You can invoke this webservices to retrieve information about mobile locations.
+
+These services are accesed via REST. The available services are:
+    - GET, POST - /locations
+
+You can interact with them via JSON objects. So an interaction is to send a json
+in your request and receive a json in the response.
