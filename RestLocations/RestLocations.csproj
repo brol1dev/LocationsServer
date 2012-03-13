@@ -73,6 +73,13 @@
     <Compile Include="service\LocationService.cs" />
     <Compile Include="model\Locations.cs" />
     <Compile Include="service\LocationsService.cs" />
+    <Compile Include="model\LocationsForDay.cs" />
+    <Compile Include="service\LocationsForDayService.cs" />
+    <Compile Include="model\LocationsInTime.cs" />
+    <Compile Include="service\LocationsInTimeService.cs" />
+    <Compile Include="model\User.cs" />
+    <Compile Include="model\Users.cs" />
+    <Compile Include="service\UsersService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

@@ -10,7 +10,7 @@ using MySql.Data.MySqlClient;
 using RestLocations.Model;
 using RestLocations.Db;
 
-namespace RestLocations
+namespace RestLocations.Service
 {
 	public class LocationsService : RestServiceBase<Locations>
 	{
@@ -40,7 +40,7 @@ namespace RestLocations
 			catch (MySqlException ex) {
 				Console.WriteLine("[MySQL Err. " + ex.Number + "] Error in " +
 					"mysql connection: " + ex.Message);
-				return new HttpResult(locations, 
+				return new HttpResult(locations.locations, 
 				                      HttpStatusCode.InternalServerError);
 			}
 			catch (Exception ex) {
@@ -51,7 +51,7 @@ namespace RestLocations
 			finally {
 				DbUtils.closeDbConnLocal();
 			}
-			return new LocationsResponse { locations = locations };
+			return new LocationsResponse { locations = locations.locations };
 		}
 		
 		public override object OnPost (Locations locations)
@@ -62,11 +62,11 @@ namespace RestLocations
 			}
 			catch (Exception ex) {
 				Console.WriteLine("Error description: " + ex.Message);
-				return new HttpResult(locations, 
+				return new HttpResult(locations.locations, 
 				                      HttpStatusCode.InternalServerError);
 			}
 			
-			return new HttpResult(locations, "application/json", 
+			return new HttpResult(locations.locations, "application/json", 
 			                      HttpStatusCode.Created);
 		}
 		
@@ -100,7 +100,7 @@ namespace RestLocations
 				cmd.Transaction = trans;
 				cmd.CommandText = inSql;
 				
-				cmd.Parameters.AddWithValue("@sim", 0);
+				cmd.Parameters.AddWithValue("@sim", null);
 				cmd.Parameters.AddWithValue("@day", null);
 				cmd.Parameters.AddWithValue("@time", (long) 0);
 				cmd.Parameters.AddWithValue("@longitude", 0.0);

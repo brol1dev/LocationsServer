@@ -9,7 +9,7 @@ namespace RestLocations.Model
 	
 	public class LocationsResponse
 	{
-		public Locations locations { get; set; }
+		public List<Location> locations { get; set; }
 	}
 }
 

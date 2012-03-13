@@ -35,7 +35,14 @@ namespace RestLocations
 			Global.mySqlConnRemote = new MySqlConnection(DbUtils.connStringRemote);
 			
 			Routes
-				.Add<Locations>("/locations", "GET, POST");
+				.Add<Locations>("/locations", "GET, POST")
+				.Add<LocationsForDay>("/locations/{Day}", "GET")
+				.Add<LocationsForDay>("/locations/{Sim}/{Day}", "GET")
+				.Add<LocationsInTime>("/locations/{Sim}/{Day}/" +
+					"{StartTime}/{EndTime}", "GET")
+				.Add<LocationsInTime>("/locations/{Day}/" +
+					"{StartTime}/{EndTime}", "GET")
+				.Add<Users>("/users", "GET");
 		}
 	}
 
