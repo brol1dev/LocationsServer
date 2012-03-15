@@ -80,6 +80,9 @@
     <Compile Include="model\User.cs" />
     <Compile Include="model\Users.cs" />
     <Compile Include="service\UsersService.cs" />
+    <Compile Include="model\VelLocation.cs" />
+    <Compile Include="service\VelocitiesService.cs" />
+    <Compile Include="service\calcs\LocationCalculations.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -94,5 +97,6 @@
     <Folder Include="model\" />
     <Folder Include="service\" />
     <Folder Include="db\" />
+    <Folder Include="service\calcs\" />
   </ItemGroup>
 </Project>

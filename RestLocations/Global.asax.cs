@@ -42,7 +42,9 @@ namespace RestLocations
 					"{StartTime}/{EndTime}", "GET")
 				.Add<LocationsInTime>("/locations/{Day}/" +
 					"{StartTime}/{EndTime}", "GET")
-				.Add<Users>("/users", "GET");
+				.Add<Users>("/users", "GET")
+				.Add<VelLocationInTime>("/velocities/{Sim}/{Day}/" +
+					"{StartTime}/{EndTime}", "GET");
 		}
 	}
 
