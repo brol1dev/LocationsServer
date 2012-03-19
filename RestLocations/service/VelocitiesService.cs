@@ -63,11 +63,12 @@ namespace RestLocations.Service
 				DbUtils.closeDbConnLocal();
 			}
 			
-			if (locations.IsNullOrEmpty())
+			if (locations.IsNullOrEmpty()) {
 				Global.log.Warn("No locations found");
 				return new HttpResult( new ResponseStatus {
 					 Message = "No Locations found"
 				}, HttpStatusCode.NotFound);
+			}
 			
 			List<VelLocation> velocities = new List<VelLocation>(locations.Count);
 			velocities.Add(new VelLocation {
