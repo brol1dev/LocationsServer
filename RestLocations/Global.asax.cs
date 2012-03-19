@@ -5,11 +5,14 @@ using System.Web.SessionState;
 using Funq;
 using ServiceStack.WebHost.Endpoints;
 using ServiceStack.Common.Utils;
+using ServiceStack.Logging;
+using ServiceStack.Logging.Support.Logging;
 using MySql.Data.MySqlClient;
 
 using RestLocations.Service;
 using RestLocations.Model;
 using RestLocations.Db;
+
 
 namespace RestLocations
 {
@@ -29,6 +32,11 @@ namespace RestLocations
 					{ "Access-Control-Allow-Headers", "Accept" },
 	            },
 	        });
+			
+			// Logging
+			//LogManager.LogFactory = new Log4NetFactory(false);
+			LogManager.LogFactory = new ConsoleLogFactory();
+			Global.log = LogManager.GetLogger(GetType());
 			
 			// Get MySQL Connection
 			Global.mySqlConnLocal = new MySqlConnection(DbUtils.connStringLocal);
@@ -52,6 +60,7 @@ namespace RestLocations
 	{
 		public static MySqlConnection mySqlConnLocal { get; set; }
 		public static MySqlConnection mySqlConnRemote { get; set; }
+		public static ILog log { get; set; }
 		
 		protected virtual void Application_Start (Object sender, EventArgs e)
 		{

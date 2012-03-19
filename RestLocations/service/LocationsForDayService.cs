@@ -22,6 +22,11 @@ namespace RestLocations.Service
 			if (request.Sim != null)
 				sql += "AND usr_sim = '" + request.Sim + "'";
 			
+			Global.log.Info("[From: " + this.RequestContext.IpAddress + 
+			                "] GET /locations/" + 
+			                (request.Sim != null ? request.Sim + "/": "") +
+			                request.Day);
+			
 			Locations locations = new Locations();
 			try {
 				DbUtils.openDbConnLocal();
@@ -44,19 +49,22 @@ namespace RestLocations.Service
 				reader.Close();
 			}
 			catch (MySqlException ex) {
-				Console.WriteLine("[MySQL Err. " + ex.Number + "] Error in " +
+				Global.log.Error("[MySQL Err. " + ex.Number + "] Error in " +
 					"mysql connection: " + ex.Message);
 				return new HttpResult(locations.locations, 
 				                      HttpStatusCode.InternalServerError);
 			}
 			catch (Exception ex) {
-				Console.WriteLine("Error: " + ex.Message);
+				Global.log.Error("Error: " + ex.Message);
 				return new HttpResult(locations.locations, 
 				                      HttpStatusCode.InternalServerError);
 			} 
 			finally {
 				DbUtils.closeDbConnLocal();
 			}
+			
+			Global.log.Info("Returning locations to " + 
+			                this.RequestContext.IpAddress);
 			return new LocationsForDayResponse { locations = locations.locations };
 		}
 	}

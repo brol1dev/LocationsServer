@@ -10,6 +10,10 @@ namespace RestLocations.Service
 		private const double R_EARTH 	= 6367.45;
 		private const double SEG_TO_HR 	= 60.0 * 60.0;
 		
+		/**
+		 * Calculates the distance between to given points, using the 
+		 * haversine formula for the Earth.
+		 */
 		public static double calculateDistance(Location l1, Location l2)
 		{
 			double haversine, distance;
@@ -27,6 +31,10 @@ namespace RestLocations.Service
 			return distance;
 		}
 		
+		/**
+		 * Calculates velocity of two points using
+		 * v = d/t
+		 */ 
 		public static double calculateVelocity(double distance,
 		                                       Location l1, Location l2)
 		{
@@ -34,6 +42,9 @@ namespace RestLocations.Service
 			double realTime;
 			
 			realTime = (double) (l2.Time - l1.Time) / SEG_TO_HR;
+			if (realTime == 0)
+				realTime = 1.0 / SEG_TO_HR;
+			
 			velocity = distance / (double) realTime;
 			return velocity;
 		}

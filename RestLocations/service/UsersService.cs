@@ -18,6 +18,8 @@ namespace RestLocations.Service
 		{
 			string sql = "SELECT usr_sim, usr_nombre FROM usuarios";
 			
+			Global.log.Info("[From: " + this.RequestContext.IpAddress + "]" +
+			                "GET /users");
 			try {
 				DbUtils.openDbConnLocal();
 				MySqlCommand cmd = new MySqlCommand(sql, Global.mySqlConnLocal);
@@ -34,13 +36,13 @@ namespace RestLocations.Service
 				reader.Close();
 			}
 			catch (MySqlException ex) {
-				Console.WriteLine("[MySQL Err. " + ex.Number + "] Error in " +
+				Global.log.Error("[MySQL Err. " + ex.Number + "] Error in " +
 					"mysql connection: " + ex.Message);
 				return new HttpResult(request.users, 
 				                      HttpStatusCode.InternalServerError);
 			}
 			catch (Exception ex) {
-				Console.WriteLine("Error: " + ex.Message);
+				Global.log.Error("Error: " + ex.Message);
 				return new HttpResult(request.users, 
 				                      HttpStatusCode.InternalServerError);
 			} 
@@ -48,6 +50,8 @@ namespace RestLocations.Service
 				DbUtils.closeDbConnLocal();
 			}
 			
+			Global.log.Info("Returning list of users to " + 
+			                this.RequestContext.IpAddress);
 			return new UsersResponse { users = request.users };
 		}
 	}
